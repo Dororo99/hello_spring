@@ -19,10 +19,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // thyemleaf
 	implementation 'org.springframework.boot:spring-boot-starter-web' // spring-web
-	// jdbc 사용해보자
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	runtimeOnly 'com.h2database:h2'
-	//
+	// JUNIT LIB
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// compileOnly("org.springframework.boot:spring-boot-devtools")
 }
