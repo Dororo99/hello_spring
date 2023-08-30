@@ -8,14 +8,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest
-@Transactional
+@Transactional // test에서는 시작전 실행되고 이후 롤백 시켜주는 애!!!
+    // 만약 main이면 롤백 안함!!
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
 
     @Test
-    void register() {
+    void 회원가입() {
         // 회원가입
         // given
         Member member =  new Member();
@@ -29,7 +30,7 @@ class MemberServiceIntegrationTest {
 
     @Test
     // 중복 터지는거도 봐야지!
-    public void register_expt(){
+    public void 중복_회원_예외(){
         //given
         Member member1 = new Member();
         member1.setName("spring");
