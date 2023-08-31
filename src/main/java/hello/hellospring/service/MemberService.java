@@ -78,6 +78,19 @@ public class MemberService {
 
     //회원가입
     public Long join(Member member){
+
+        // Check time one by one
+        long start = System.currentTimeMillis(); // option + cmd + v
+        try{
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
+
         // 같은 이름의 회원은 안된다! (중복 방지)
 //        Optional<Member> result = memberRepository.findByName(member.getName());
 //        result.ifPresent(m -> {
@@ -94,9 +107,7 @@ public class MemberService {
 //        // ctrl + t
 
         // 메서드로 뽑아내기!
-        validateDuplicateMember(member);
-        memberRepository.save(member);
-        return member.getId();
+
 
     }
 
